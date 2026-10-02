@@ -735,7 +735,6 @@ onMounted(async () => {
 
 .list-footer { display: flex; justify-content: flex-end; padding: 14px 18px; }
 .dispatch-tip { color: var(--ops-muted); font-size: 12px; line-height: 1.7; }
-.dispatch-risk { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; color: #475569; font-size: 13px; }
 .drawer-section { margin-top: 22px; }
 .drawer-section h4 { margin: 0 0 14px; font-size: 14px; color: var(--ops-primary); }
 .section-count { margin-left: 8px; color: var(--ops-muted); font-size: 12px; font-weight: 400; }
