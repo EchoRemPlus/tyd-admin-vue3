@@ -116,7 +116,7 @@ import { useRoute } from 'vue-router'
 import dayjs from 'dayjs'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
-import { addTask, closeTask, getTask, getTaskFacilities, listRecords, listRoutes, listTasks, listUsers, updateTask, type InspectionRecord, type RouteInfo, type Task, type TaskFacility } from '@/api/system'
+import { addTask, closeTask, getTask, getTaskFacilities, listRecords, listRoutes, listTasks, listUserOptions, updateTask, type InspectionRecord, type RouteInfo, type Task, type TaskFacility } from '@/api/system'
 import { formatTime, taskStatusMap } from '@/utils/format'
 import { useAuthStore } from '@/stores/auth'
 import { applyTableSort, type TableSortChange } from '@/utils/tableSort'
@@ -219,9 +219,9 @@ function handleSortChange(change: TableSortChange) {
 
 async function loadOptions() {
   if (!auth.hasPermission('system:task:add') && !auth.hasPermission('system:task:edit')) return
-  const [routeResult, userResult] = await Promise.all([listRoutes({ pageNum: 1, pageSize: 200, routeStatus: '0' }), listUsers({ pageNum: 1, pageSize: 200, status: '0' })]) as any[]
+  const [routeResult, userResult] = await Promise.all([listRoutes({ pageNum: 1, pageSize: 200, routeStatus: '0' }), listUserOptions({ roleId: 3 })]) as any[]
   routes.value = routeResult.rows || []
-  users.value = userResult.rows || []
+  users.value = userResult.data || []
 }
 
 function resetForm(value: Task) { Object.assign(form, emptyForm(), value) }

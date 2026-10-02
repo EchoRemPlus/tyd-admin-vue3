@@ -56,7 +56,7 @@ import PaginationBar from '@/components/PaginationBar.vue'
 import { computed, onMounted, reactive, ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
-import { addPlan, deletePlan, getPlanStatusCounts, listPlans, listRoutes, listUsers, updatePlan, type Plan, type RouteInfo } from '@/api/system'
+import { addPlan, deletePlan, getPlanStatusCounts, listPlans, listRoutes, listUserOptions, updatePlan, type Plan, type RouteInfo } from '@/api/system'
 import { ALL_TAB_META, PLAN_STATUS_META, rowToneClass, statusPillStyle } from '@/utils/statusMeta'
 import { formatTime } from '@/utils/format'
 import { applyTableSort, type TableSortChange } from '@/utils/tableSort'
@@ -121,10 +121,10 @@ function handleSortChange(change: TableSortChange) {
 async function loadOptions() {
   const [routeResult, userResult] = await Promise.all([
     listRoutes({ pageNum: 1, pageSize: 200, routeStatus: '0' }),
-    listUsers({ pageNum: 1, pageSize: 200, status: '0' })
+    listUserOptions({ roleId: 3 })
   ]) as any[]
   routes.value = routeResult.rows || []
-  users.value = userResult.rows || []
+  users.value = userResult.data || []
 }
 function openCreate() { Object.assign(form, emptyForm()); dialogVisible.value = true }
 function openEdit(row: Plan) { Object.assign(form, emptyForm(), row); dialogVisible.value = true }
