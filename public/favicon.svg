@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="tyd-mark" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2dd4bf" />
+      <stop offset=".42" stop-color="#14b8a6" />
+      <stop offset="1" stop-color="#0f766e" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="9" fill="url(#tyd-mark)" />
+  <path d="M16 4.4c-4.77 0-8.64 3.83-8.64 8.55 0 6.16 8.64 14.65 8.64 14.65s8.64-8.49 8.64-14.65C24.64 8.23 20.77 4.4 16 4.4Z" fill="#fff" />
+  <path d="M12.5 12.9l2.55 2.55 4.55-4.9" fill="none" stroke="#0f766e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

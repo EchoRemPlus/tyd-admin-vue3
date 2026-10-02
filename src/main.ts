@@ -1,0 +1,24 @@
+import { createApp } from 'vue'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import { createPinia } from 'pinia'
+import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import 'element-plus/dist/index.css'
+import './styles.css'
+import App from './App.vue'
+import router from './router'
+import { permission } from './directives/permission'
+
+dayjs.locale('zh-cn')
+
+const app = createApp(App)
+for (const [name, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(name, component)
+}
+app.directive('permission', permission)
+app.use(createPinia())
+app.use(router)
+app.use(ElementPlus, { locale: zhCn })
+app.mount('#app')
