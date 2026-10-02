@@ -186,6 +186,7 @@ export const getBusinessTimeline = (businessType: string, businessId: number) =>
   http.get<BusinessLog[]>(`/system/businessLog/timeline/${businessType}/${businessId}`)
 export const listMessages = (params: Record<string, unknown>) => http.get<PageResult<MessageInfo>>('/system/message/list', { params })
 export const listUsers = (params: Record<string, unknown>) => http.get<PageResult<Record<string, any>>>('/system/user/list', { params })
+export const listRepairers = () => http.get<Record<string, any>[]>('/system/user/repairers')
 
 export interface RepairProcess {
   processId?: number
