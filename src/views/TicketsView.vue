@@ -223,7 +223,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { Expand, Fold, Refresh, Search } from '@element-plus/icons-vue'
 import AttachmentUpload from '@/components/AttachmentUpload.vue'
 import InspectionRecordGallery from '@/components/InspectionRecordGallery.vue'
-import { closeTicket, getBusinessTimeline, getRecord, getTicket, listAttachments, listRepairProcesses, listRepairers, listTickets, updateTicket, type Attachment, type BusinessLog, type InspectionRecord, type RepairProcess, type Ticket } from '@/api/system'
+import { closeTicket, getBusinessTimeline, getRecord, getTicket, listAttachments, listRepairProcesses, listTickets, listUserOptions, updateTicket, type Attachment, type BusinessLog, type InspectionRecord, type RepairProcess, type Ticket, type UserOption } from '@/api/system'
 import { formatTime, logActionMap, priorityMap, repairResultMap, ticketStatusMap } from '@/utils/format'
 import { useAuthStore } from '@/stores/auth'
 import { applyTableSort, type TableSortChange } from '@/utils/tableSort'
@@ -279,7 +279,7 @@ const filters = reactive({
   dateRange: null as [string, string] | null,
   overdueOnly: false
 })
-const repairers = ref<Record<string, any>[]>([])
+const repairers = ref<UserOption[]>([])
 const processes = ref<RepairProcess[]>([])
 const logs = ref<BusinessLog[]>([])
 const attachments = ref<Attachment[]>([])
@@ -551,7 +551,7 @@ async function loadRepairers() {
     repairers.value = []
     return
   }
-  const result: any = await listRepairers()
+  const result: any = await listUserOptions({ roleId: 4 })
   repairers.value = result.data || []
 }
 function openDispatch(item: Ticket) {
